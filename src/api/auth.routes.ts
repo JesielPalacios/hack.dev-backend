@@ -1,13 +1,12 @@
 import express, { NextFunction, Request, Response } from 'express';
+import authCtrl from '../controllers/auth.controller';
 
 const router = express.Router();
 
-// endpoints
-router.post(
-  '/auth/login',
-  async (req: Request, res: Response, next: NextFunction) => {
-    return res.status(201).json({});
-  }
-);
+// Login endpoint
+router.post('/login', authCtrl.sigIn);
+
+// Register endpoint
+router.post('/register', authCtrl.sigUp);
 
 export default router;

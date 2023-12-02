@@ -20,7 +20,7 @@ describe('userService', () => {
       // const result = await
     });
 
-    test('should throw error product with user allready exist', () => {
+    test('should throw error user with user allready exist', () => {
       const a = 10;
       expect(a).toEqual(10);
     });
