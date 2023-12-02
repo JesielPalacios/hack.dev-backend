@@ -1,6 +1,22 @@
-POST http://localhost:5000/product
-Content-Type: application/json
+@localhost=http://localhost
+@localhostPort={{$dotenv PORT}}
+@webhost=www.taller-vehicular.com
+@hostname = {{localhost}}
+@port = {{localhostPort}}
+@host = {{hostname}}:{{port}}/api
+@contentType = 'application/json'
+@createdAt = {{$datetime iso8601}}
+@email = {{$dotenv ADMIN_EMAIL}}
+@password = {{$dotenv ADMIN_PASSWORD}}
+
+@baseUrl = http://localhost:4000/api
+@authToken = {{login.response.body.token}}
+
+# @name login
+POST {{host}}/auth/login HTTP/1.1
+content-type: application/json
 
 {
-  "name": "Product name"
+  "email": "{{email}}",
+  "password": "{{password}}"
 }
