@@ -15,6 +15,7 @@ export default {
   cloudinaryCloudName: process.env.CLOUDINARY_CLOUD_NAME,
   cloudinaryApiKey: process.env.CLOUDINARY_API_KEY,
   cloudinaryApiScret: process.env.CLOUDINARY_API_SECRET,
+  mongoDBUri: process.env.MONGODB_URI,
 
   gmailHost: process.env.GMAIL_HOST,
   gmailPort: process.env.GMAIL_PORT,

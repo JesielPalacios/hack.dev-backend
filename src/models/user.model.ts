@@ -7,17 +7,26 @@ export interface IUser extends mongoose.Document {
   firstName: string;
   firstSurname: string;
   gender: string;
+  typeCitizenshipNumberId: string;
+  citizenshipNumberId: string;
+  address: string;
+  birthDate: Date;
+  birthCountry: string;
+  birthDepartment: string;
+  birthCity: string;
+  imageUrl: string;
+  imagePublicId: string;
   preferences: [];
   secondName?: string;
   secondSurname?: string;
   cellPhoneNumber?: string;
   tokenAuth?: string;
-  codeAuth?: string;
+  codeAuth?: number;
   verifyPassword(encryptedPassword: string): Promise<boolean>;
-  decryptPassword(password: string): Promise<string>;
+  _doc: any;
 }
 
-const userSchema = new Schema<IUser>(
+const userSchema: Schema = new Schema<IUser>(
   {
     email: {
       type: String,
@@ -133,19 +142,14 @@ const userSchema = new Schema<IUser>(
   }
 );
 
-userSchema.statics.encryptPassword = async (
+userSchema.methods.verifyPassword = async function (
   password: string
-): Promise<string> => {
-  return encryptPassword(password);
-};
-
-userSchema.statics.verifyPassword = async function (
-  encryptedPassword: string
 ): Promise<boolean> {
   const user = this;
-  return decryptPassword(encryptedPassword) === decryptPassword(user.password);
+  return password === decryptPassword(user.password);
 };
 
+// Middleware pre-save
 userSchema.pre('save', async function (next) {
   const user = this;
   if (!user.isModified('password')) {

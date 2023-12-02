@@ -1,12 +1,12 @@
 import express, { NextFunction, Request, Response } from 'express';
-import authCtrl from '../controllers/auth.controller';
+import { authController } from '../controllers/auth.controller';
 
 const router = express.Router();
 
 // Login endpoint
-router.post('/login', authCtrl.sigIn);
+router.post('/login', authController.sigIn);
 
 // Register endpoint
-router.post('/register', authCtrl.sigUp);
+router.post('/register', authController.sigUp);
 
 export default router;

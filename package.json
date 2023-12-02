@@ -2,7 +2,7 @@
   "name": "hack.dev-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src",
   "scripts": {
     "dev": "nodemon src/server.ts",
     "start": "node dist/server.js",
@@ -38,6 +38,7 @@
     "@types/express-fileupload": "^1.4.4",
     "@types/jest": "^29.5.10",
     "@types/jsonwebtoken": "^9.0.5",
+    "@types/mongoose": "^5.11.97",
     "@types/morgan": "^1.9.9",
     "@types/rosie": "^0.0.45",
     "@types/supertest": "^2.0.16",
