@@ -8,17 +8,22 @@ import compression from 'compression';
 import helmet from 'helmet';
 // import { createAdmin } from '../initialSetup';
 import fileUpload from 'express-fileupload';
+import config from './utils/config';
 
 // Initializations
 const app = express();
 app.use(express.json());
+var corsOptions = {
+  // origin: config.client,
+  // optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
 
 // Settings
 app.set('port', process.env.PORT || 3001);
 
 // Middlewares
 app.use(morgan('dev'));
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(helmet());
